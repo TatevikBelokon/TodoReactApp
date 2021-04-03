@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap');
+
+.wrap{
+	margin: auto;
+	width:70%;	
+	font-family: 'Lora', serif;
+	font-weight: 400;
+	background: #ececec;
+	padding: 2%;
+	border-radius: 15px;
+	box-shadow: 0 0 10px #968f8f;	
+}
+.linksList{
+	display: flex;
+	justify-content: center;
+}
+.link{
+	text-decoration: none;
+	color: black;	
+}
+.linkSelect{
+    color: #f50057;
+} 
+
+@media(max-width: 768px){
+	body{		
+		min-width: 605px;
+    	overflow-x: scroll;
+	}
+}
+

@@ -1,0 +1,23 @@
+.wrap{
+    margin-top: 3%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    color: #565555;
+}
+
+.count{
+	color: #f50057;
+	padding-right: 5px;
+}
+
+.filter{
+	text-transform: capitalize !important;
+    color: #565555 !important;
+}
+
+.filterSelect{
+	background: #f50057 !important;
+	color:white !important;
+}
+
