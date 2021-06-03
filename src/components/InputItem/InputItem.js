@@ -14,20 +14,26 @@ const StyledButton = withStyles({
 class InputItem extends React.Component{
 	state = {
 		inputValue: '',
-		btnIsClicked: false
+		btnIsClicked: false,
+		itemIsExist: false
 	};
 
 	onButtonClick = () => {	
-		if(this.state.inputValue !== ''){
-			this.props.onClickAdd(this.state.inputValue);
-			this.setState({ inputValue : '', btnIsClicked: false });
+		if(this.state.inputValue !== ''){			
+		 	if (this.props.items.find(item => item.value === this.state.inputValue) === undefined){	
+				this.props.onClickAdd(this.state.inputValue);
+				this.setState({ inputValue : '', btnIsClicked: false,  itemIsExist: false});				
+			}
+			else{			
+				this.setState({ itemIsExist: true });				
+			}
 		}else{
 			 this.setState({ btnIsClicked: true });
 		}
 	}
 
 	render(){
-		const {onClickAdd} = this.props;
+		const {onClickAdd, items} = this.props;
 
 		return (<div className={styles.wrap}>	
 	        <TextField
@@ -39,8 +45,10 @@ class InputItem extends React.Component{
 
 		          value={this.state.inputValue}
 		          onChange={event => this.setState({ inputValue: event.target.value })}
-		          error={this.state.inputValue === '' && this.state.btnIsClicked}
-		          helperText={this.state.inputValue === '' && this.state.btnIsClicked ? 'This field cannot be empty!' : ' '}
+
+		          error={this.state.inputValue === '' && this.state.btnIsClicked || this.state.itemIsExist}
+		          helperText={ this.state.inputValue === '' && this.state.btnIsClicked ? 'This field cannot be empty!' : 
+		          			  (this.state.itemIsExist ? 'This task is already exists!' : ' ') }	       
 	        />
 	        <StyledButton id="btnSave"
 	        			  className={styles.btn} 
